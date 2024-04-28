@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-template-typescript-inputs-dad/static/css/main.40ab48ac.css",
+    "main.js": "/react-template-typescript-inputs-dad/static/js/main.631e6145.js",
+    "index.html": "/react-template-typescript-inputs-dad/index.html",
+    "main.40ab48ac.css.map": "/react-template-typescript-inputs-dad/static/css/main.40ab48ac.css.map",
+    "main.631e6145.js.map": "/react-template-typescript-inputs-dad/static/js/main.631e6145.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.40ab48ac.css",
+    "static/js/main.631e6145.js"
+  ]
+}
