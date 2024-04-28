@@ -92,15 +92,15 @@ export default App;
 ### Минимальная конфигурация для запуска пустого приложения готова.
 
 ## 1.	ПЕРВЫЙ КОМПОНЕНТ. ТИПИЗАЦИЯ PROPS. Interface CardProps.		
-    1	.	Создаем папку components.
-    2	.	Создадим в нем файл Card.tsx .
-    3	.	Разворачиваем компонент Card. Компонент будет принимать ширину width: const Card = ({width}).
-    4	.	TypeScript выдает ошибку: Binding element 'width' implicitly has an 'any' type.
-    5	.	Создадим интерфейс, в котором опишем, какие props будет ожидать наш компонент: interface CardProps{ width: string }.
-    6	.	Указываем, что объект который будет принимать карточка - это будет объект типа CardProps: const Card = ({width}: CardProps) =>{}.
-    7	.	Ширину передаем в инлайн стиль: <div style={{width}}></div>.
-    8	.	Добавим в стили серую рамку и высоту: <div style={{width, height, border: "1px solid gray"}}></div>.
-    9	.	Добавим высоту в пропсы: interface CardProps{ width: string; height: string;}.
+    1 . Создаем папку components.
+    2 . Создадим в нем файл Card.tsx .
+    3 . Разворачиваем компонент Card. Компонент будет принимать ширину width: const Card = ({width}).
+    4 . TypeScript выдает ошибку: Binding element 'width' implicitly has an 'any' type.
+    5 . Создадим интерфейс, в котором опишем, какие props будет ожидать наш компонент: interface CardProps{ width: string }.
+    6 . Указываем, что объект который будет принимать карточка - это будет объект типа CardProps: const Card = ({width}: CardProps) =>{}.
+    7 . Ширину передаем в инлайн стиль: <div style={{width}}></div>.
+    8 . Добавим в стили серую рамку и высоту: <div style={{width, height, border: "1px solid gray"}}></div>.
+    9 . Добавим высоту в пропсы: interface CardProps{ width: string; height: string;}.
     10.	Передаем параметром в карточку высоту: const Card = ({width, height}: CardProps).
     11.	Переходим в App.tsx и добавляем созданную карточку: <div className="App"><Card /></div>.
     12.	Автокомплит подсказывает, что у нас два обязательных пропса: width и height. Необязательными можно делать пропсы с помощью следующего синтаксиса: interface CardProps{ width?: string; height?: string;}. В таком случае, если один или несколько пропсов не переданы автокомплит ругаться не будет.
@@ -110,18 +110,18 @@ export default App;
     16.	Добавим children в пропсы компонента и в блок div.
 			
 ## 2.	React.FunctionComponent, React.FC.
-    1	.	У React есть специальный тип для функционального компонента: const Card: React.FunctionComponent. Так же можно записать кратко: const Card: React.FC.
-    2	.	Теперь объявление пропсов нам нужно указать в дженерике, а FC импортировать в файл: const Card: FC<CardProps> = ({width, height, children}).
+    1 . У React есть специальный тип для функционального компонента: const Card: React.FunctionComponent. Так же можно записать кратко: const Card: React.FC.
+    2 .	Теперь объявление пропсов нам нужно указать в дженерике, а FC импортировать в файл: const Card: FC<CardProps> = ({width, height, children}).
         ```
         В TypeScript дженерик представляет собой механизм, который позволяет создавать обобщенные типы или функции, которые могут работать с различными типами данных. Он позволяет создавать компоненты, которые могут быть параметризованы типами данных, чтобы обеспечить повторное использование кода и обеспечить безопасность типов.
         ```
-    3	.	Добавим еще один пропс variant. Он будет указывать на стиль карточки.
-    4	.	Для выбора вариантов для поля variant сделаем перечисление: 1. outline="outline" - когда карточка будет обведена и 2. primary="primary" - карточка с залитым фоном: export enum CardVariant { outline="outlined", primary="primary", }.
-    5	.	Укажем тип variant в интерфейсе: variant: CardVariant;.
-    6	.	Добавим реализацию пропса variant в блок: <div style={{width, height, border: variant === CardVariant.outline ? "1px solid gray" : "none", background: variant === CardVariant.primary ? "lightgray" : ""}}>.
-    7	.	Добавим variant в файле App.jsx: <Card width='200px' height='200px' variant={CardVariant.outline}>
-    8	.	Добавим в интерфейс для пропсов компонента функцию: onClick: () => void; Параметром эта функция ничего не принимает и ничего не возвращает поэтому указываем void.
-    9	.	Добавляем функцию как пропс в компонент: const Card: FC<CardProps> = ({width, height, variant, onClick, children}).
+    3 .	Добавим еще один пропс variant. Он будет указывать на стиль карточки.
+    4 .	Для выбора вариантов для поля variant сделаем перечисление: 1. outline="outline" - когда карточка будет обведена и 2. primary="primary" - карточка с залитым фоном: export enum CardVariant { outline="outlined", primary="primary", }.
+    5 .	Укажем тип variant в интерфейсе: variant: CardVariant;.
+    6 .	Добавим реализацию пропса variant в блок: <div style={{width, height, border: variant === CardVariant.outline ? "1px solid gray" : "none", background: variant === CardVariant.primary ? "lightgray" : ""}}>.
+    7 .	Добавим variant в файле App.jsx: <Card width='200px' height='200px' variant={CardVariant.outline}>
+    8 .	Добавим в интерфейс для пропсов компонента функцию: onClick: () => void; Параметром эта функция ничего не принимает и ничего не возвращает поэтому указываем void.
+    9 .	Добавляем функцию как пропс в компонент: const Card: FC<CardProps> = ({width, height, variant, onClick, children}).
     10.	Вешаем слушатель события на корневой div.
     11.	Переходим в App и передаем эту функцию в Card. При нажатии на карточку будем выводить в логи слово click: <Card onClick={() => console.log("click")} width="200px" height="200px" variant={CardVariant.outline}>.
     12.	Передадим в функцию в компоненте число: onClick: (num: number) => void;.
@@ -132,15 +132,15 @@ export default App;
     17.	Интересный момент: если мы хотим указать onClick как необязательный параметр (onClick?) в самой функции нам надо проверять, передается ли этот пропс: onClick={() => onClick && onClick(state)}.
 			
 ## 3.	ТИПИЗАЦИЯ СОБЫТИЙ. MouseEvents, DragEvents, ChangeEvents.		
-    1	.	Для типизации событий создадим отдельный компонент EventsExample.tsx.
-    2	.	Разворачиваем компонент.
-    3	.	Это будет функциональный компонент FC.
-    4	.	В блок div добавим инпут и кнопку.
-    5	.	Сделаем наш инпут управляемым. Объявляем состояние: value, setValue, по умолчанию пустая строка. Тип для состояния укажем как string.
-    6	.	Передаем поле value в пропс value для инпута.
-    7	.	Реализовываем слушатель события onChange для отслеживания изменения в инпуте. В событии onChange будем вызывать функцию changeHandler.
-    8	.	Создаем функцию changeHandler которая параметром будет принимать event (e). В реакте этот event оборачивается в некоторую обертку, которая называется синтетик event, и если мы попытаемся обратиться к полям эвента, то мы не знаем к чему конкретно обращаться.
-    9	.	Что бы посмотреть список полей с помощью автокомплита необходимо event'у указать тип React.ChangeEvent.
+    1 .	Для типизации событий создадим отдельный компонент EventsExample.tsx.
+    2 .	Разворачиваем компонент.
+    3 .	Это будет функциональный компонент FC.
+    4 .	В блок div добавим инпут и кнопку.
+    5 .	Сделаем наш инпут управляемым. Объявляем состояние: value, setValue, по умолчанию пустая строка. Тип для состояния укажем как string.
+    6 .	Передаем поле value в пропс value для инпута.
+    7 .	Реализовываем слушатель события onChange для отслеживания изменения в инпуте. В событии onChange будем вызывать функцию changeHandler.
+    8 .	Создаем функцию changeHandler которая параметром будет принимать event (e). В реакте этот event оборачивается в некоторую обертку, которая называется синтетик event, и если мы попытаемся обратиться к полям эвента, то мы не знаем к чему конкретно обращаться.
+    9 .	Что бы посмотреть список полей с помощью автокомплита необходимо event'у указать тип React.ChangeEvent.
     10.	Реализуем onClick для кнопки. При нажатии на кнопку будет вызываться функция clickHandler.
     11.	Реализуем функцию clickHandler. Параметром эта функция будет принимать event, тип этого эвента будет React.MouseEvents.
     12.	Теперь нам доступны все поля event в обоих функциях.
