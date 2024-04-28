@@ -92,15 +92,15 @@ export default App;
 ### Минимальная конфигурация для запуска пустого приложения готова.
 
 ## 1.	ПЕРВЫЙ КОМПОНЕНТ. ТИПИЗАЦИЯ PROPS. Interface CardProps.		
-    1 . Создаем папку components.
-    2 . Создадим в нем файл Card.tsx .
-    3 . Разворачиваем компонент Card. Компонент будет принимать ширину width: const Card = ({width}).
-    4 . TypeScript выдает ошибку: Binding element 'width' implicitly has an 'any' type.
-    5 . Создадим интерфейс, в котором опишем, какие props будет ожидать наш компонент: interface CardProps{ width: string }.
-    6 . Указываем, что объект который будет принимать карточка - это будет объект типа CardProps: const Card = ({width}: CardProps) =>{}.
-    7 . Ширину передаем в инлайн стиль: <div style={{width}}></div>.
-    8 . Добавим в стили серую рамку и высоту: <div style={{width, height, border: "1px solid gray"}}></div>.
-    9 . Добавим высоту в пропсы: interface CardProps{ width: string; height: string;}.
+    1 .	Создаем папку components.
+    2 .	Создадим в нем файл Card.tsx .
+    3 .	Разворачиваем компонент Card. Компонент будет принимать ширину width: const Card = ({width}).
+    4 .	TypeScript выдает ошибку: Binding element 'width' implicitly has an 'any' type.
+    5 .	Создадим интерфейс, в котором опишем, какие props будет ожидать наш компонент: interface CardProps{ width: string }.
+    6 .	Указываем, что объект который будет принимать карточка - это будет объект типа CardProps: const Card = ({width}: CardProps) =>{}.
+    7 .	Ширину передаем в инлайн стиль: <div style={{width}}></div>.
+    8 .	Добавим в стили серую рамку и высоту: <div style={{width, height, border: "1px solid gray"}}></div>.
+    9 .	Добавим высоту в пропсы: interface CardProps{ width: string; height: string;}.
     10.	Передаем параметром в карточку высоту: const Card = ({width, height}: CardProps).
     11.	Переходим в App.tsx и добавляем созданную карточку: <div className="App"><Card /></div>.
     12.	Автокомплит подсказывает, что у нас два обязательных пропса: width и height. Необязательными можно делать пропсы с помощью следующего синтаксиса: interface CardProps{ width?: string; height?: string;}. В таком случае, если один или несколько пропсов не переданы автокомплит ругаться не будет.
@@ -110,7 +110,7 @@ export default App;
     16.	Добавим children в пропсы компонента и в блок div.
 			
 ## 2.	React.FunctionComponent, React.FC.
-    1 . У React есть специальный тип для функционального компонента: const Card: React.FunctionComponent. Так же можно записать кратко: const Card: React.FC.
+    1 .	У React есть специальный тип для функционального компонента: const Card: React.FunctionComponent. Так же можно записать кратко: const Card: React.FC.
     2 .	Теперь объявление пропсов нам нужно указать в дженерике, а FC импортировать в файл: const Card: FC<CardProps> = ({width, height, children}).
         ```
         В TypeScript дженерик представляет собой механизм, который позволяет создавать обобщенные типы или функции, которые могут работать с различными типами данных. Он позволяет создавать компоненты, которые могут быть параметризованы типами данных, чтобы обеспечить повторное использование кода и обеспечить безопасность типов.
