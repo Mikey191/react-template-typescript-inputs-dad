@@ -191,4 +191,4 @@ export default App;
         В таком случае, при отсутствии поля вернется null.
         ```
 
-## КОНЕЦ ПЕРВОЙ ЧАСТИ eact-template-typescript
+## КОНЕЦ ПЕРВОЙ ЧАСТИ react-template-typescript
